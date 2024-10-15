@@ -119,9 +119,13 @@ def propigation_time(mean_path, radius, c):
   time = 0
 
   while radius > np.sqrt(x**2 + y**2): # when the particle passes the radius is will record time
+    
+    r = np.random.uniform(0,1) #pulling # from 0-1 dist
 
-    dist = np.random.exponential(mean_path) #random distances centered at mean path = 1
+    delta_t = -mean_path/c * np.log(r) #using delta t equation
 
+    dist = c *delta_t 
+    
     #trig and updating the coords
     theta = np.random.uniform(0, 2*np.pi)
     x += dist * np.cos(theta)
